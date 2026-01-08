@@ -1,0 +1,255 @@
+meta:
+  engine: 4.1.0
+points:
+  key.spacing: U
+  key.tags: key
+  zones:
+    matrix:
+      anchor:
+        shift: [150, -150] # Fix KiCad placement
+      columns:
+        outer:
+        pinky:
+        ring:
+          key.stagger: 6
+        middle:
+          key.stagger: 4
+        index:
+          key.stagger: -3
+        inner:
+          key.stagger: -2
+      rows:
+        bottom:
+        home:
+        above:
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-1.3*U, -1.05*U]
+      columns:
+        near:
+        home:
+          key.spread: 20
+          key.splay: -7
+          key.origin: [-12, -9]
+        far:
+          key.spread: 20
+          key.splay: -28
+          key.origin: [-10, -9]
+      rows:
+        thumb:
+    mcu:
+      key.tags:
+        - helper
+      anchor:
+        - ref: matrix_inner_top
+          shift: [u/2+18/2+1.6,u/2-33/2]
+    screw_1:
+      key.tags: 
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_outer_top
+          - ref: matrix_outer_above
+          - ref: matrix_pinky_top
+          - ref: matrix_pinky_above
+    screw_2:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_inner_top
+          - ref: matrix_inner_above
+          - ref: matrix_index_top
+          - ref: matrix_index_above
+    screw_3:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_outer_bottom
+          - ref: matrix_outer_home
+          - ref: matrix_pinky_bottom
+          - ref: matrix_pinky_home
+    screw_4:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: thumb_home_thumb
+          - ref: thumb_far_thumb
+          - ref: matrix_inner_bottom
+        shift: [5,2]
+    screw_5:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_index_home
+          - ref: matrix_index_bottom
+          - ref: matrix_middle_home
+          - ref: matrix_middle_bottom
+  # mirror:
+  #   ref: matrix_pinky_home
+  #   distance: 250
+
+outlines:
+  left:
+    - where: [key]
+      what: rectangle
+      size: [U, U]
+    - where: [mcu]
+      what: rectangle
+      size: [18, 33]
+    - what: polygon
+      points:
+        - ref: matrix_ring_bottom
+          shift: [U/2, -U/2]
+        - ref: thumb_near_thumb
+          shift: [-U/2, U/2]
+        - ref: thumb_near_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_home_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [U/2, U/2]
+        - ref: mcu
+          shift: [18/2,-80]
+        - ref: mcu
+          shift: [18/2,33/2]
+        - ref: matrix_inner_top
+          shift: [-U/2, U/2]
+        - ref: matrix_ring_bottom
+          shift: [U/2, U/2]
+  _keycaps:
+    - where: [key]
+      what: rectangle
+      size: 18
+      fillet: 1
+    - where: [thumb]
+      what: rectangle
+      size: 18
+      fillet: 1
+  _mcu:
+    - where: [mcu]
+      what: rectangle
+      size: [17.78, 33]
+    - where: [mcu]
+      what: rectangle
+      size: [8.94, 7.35]
+      operation: stack
+      adjust.shift: [0, 33/2-7.35/2+0.7]
+  _screws:
+    - where: [screw]
+      what: circle
+      radius: 4.3/2
+  preview:
+    - what: outline
+      name: left
+    - what: outline
+      name: _keycaps
+      operation: stack
+    - what: outline
+      name: _mcu
+      operation: stack
+    - what: outline
+      name: _screws
+      operation: stack
+
+pcbs:
+  left:
+    template: kicad8
+    outlines:
+      main:
+        outline: left
+    footprints:
+      keyswitches:
+        where: [key]
+        what: ceoloide/switch_choc_v1_v2
+        params:
+          from: "{{col_net}}"
+          to: "{{colrow}}"
+          hotswap: true
+          choc_v1_support: false
+          include_stabilizer_pad: false
+          include_plated_holes: false
+          reversible: true
+        adjust.rotate: 180
+      diodes:
+        where: /key/
+        what: ceoloide/diode_tht_sod123
+        params:
+          from: "{{colrow}}"
+          to: "{{row}}"
+          reversible: true
+        adjust.shift: [5.7, 0]
+        adjust.rotate: 180
+      mcu:
+        what: ceoloide/mcu_supermini_nrf52840
+        where: mcu
+        params:
+          reversible: true
+          only_required_jumpers: true
+          P10: "r0"
+          P3: "r1"
+          P4: "r2"
+          P5: "r3"
+          P2: "c1"
+          P15: "c2"
+          P18: "c3"
+          P16: "c4"
+          P8: "c5"
+          P9: "c6"
+          P6: "DA"
+          P7: "CL"
+          P14: "CS"
+          P19_label: " "
+          P20_label: " "
+          P21_label: " "
+          use_rectangular_jumpers: false
+      battery_connector:
+        what: ceoloide/battery_connector_jst_ph_2
+        where: mcu
+        params:
+          reversible: true
+        adjust:
+          shift: [-3,-25]
+          rotate: 0
+      on_off_switch:
+        what: ceoloide/power_switch_smd_side
+        where: mcu
+        params:
+          from: BAT_P
+          to: RAW
+          reversible: true
+        adjust:
+          shift: [-15, 33/2-2]
+          rotate: 90
+      reset_switch:
+        what: ceoloide/reset_switch_smd_side
+        where: mcu
+        params:
+          reversible: true
+          include_bosses: true
+          include_silkscreen: true
+          include_courtyard: true
+        adjust:
+          shift: [-25, 33/2-2.5]
+          rotate: 0
+      screws:
+        what: ceoloide/mounting_hole_npth
+        where: /screw/
+        params:
+          hole_size: 4.6
+          hole_drill: 2.2
+
