@@ -1,0 +1,132 @@
+meta:
+  engine: 4.1.0
+points:
+  key.spacing: U
+  key.tags: key
+  zones:
+    matrix:
+      columns:
+        outer:
+        pinky:
+        ring:
+          key.stagger: 6
+        middle:
+          key.stagger: 4
+        index:
+          key.stagger: -3
+        inner:
+          key.stagger: -2
+      rows:
+        bottom:
+        home:
+        above:
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-1.3*U, -1.05*U]
+      columns:
+        near:
+        home:
+          key.spread: 20
+          key.splay: -7
+          key.origin: [-12, -9]
+        far:
+          key.spread: 20
+          key.splay: -28
+          key.origin: [-10, -9]
+      rows:
+        thumb:
+    mcu:
+      key.tags:
+        - helper
+      anchor:
+        - ref: matrix_inner_top
+          shift: [u/2+18/2+1.6,u/2-33/2]
+  # mirror:
+  #   ref: matrix_pinky_home
+  #   distance: 250
+
+outlines:
+  left:
+    - where: [key]
+      what: rectangle
+      size: [U, U]
+    - where: [thumb]
+      what: rectangle
+      size: [U, U]
+    - where: [mcu]
+      what: rectangle
+      size: [18, 33]
+    - what: polygon
+      points:
+        - ref: matrix_ring_bottom
+          shift: [U/2, -U/2]
+        - ref: thumb_near_thumb
+          shift: [-U/2, U/2]
+        - ref: thumb_near_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_home_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [-U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [U/2, -U/2]
+        - ref: thumb_far_thumb
+          shift: [U/2, U/2]
+        - ref: mcu
+          shift: [18/2,-80]
+        - ref: mcu
+          shift: [18/2,33/2]
+        - ref: matrix_inner_top
+          shift: [-U/2, U/2]
+        - ref: matrix_ring_bottom
+          shift: [U/2, U/2]
+  _keycaps:
+    - where: [key]
+      what: rectangle
+      size: 18
+      fillet: 1
+    - where: [thumb]
+      what: rectangle
+      size: 18
+      fillet: 1
+  _mcu:
+    - where: [mcu]
+      what: rectangle
+      size: [17.78, 33]
+    - where: [mcu]
+      what: rectangle
+      size: [8.94, 7.35]
+      operation: stack
+      adjust.shift: [0, 33/2-7.35/2+0.7]
+  preview:
+    - what: outline
+      name: left
+    - what: outline
+      name: _keycaps
+      operation: stack
+    - what: outline
+      name: _mcu
+      operation: stack
+
+pcbs:
+  left:
+    outlines:
+      main:
+        outline: left
+    footprints:
+      keyswitches:
+        where: true
+        what: choc
+        params:
+          hotswap: true
+          from: "{{col_net}}"
+          to: "{{colrow}}"
+      promicro:
+        what: promicro
+        params: 
+          orientation: up
+        where:
+          ref: matrix_inner_top
+          shift: [10, 0]
