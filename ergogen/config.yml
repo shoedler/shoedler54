@@ -11,13 +11,13 @@ points:
         c0: # Outer
         c1: # Pinky
         c2: # Ring
-          key.stagger: 6
+          key.stagger: 8
         c3: # Middle
           key.stagger: 4
         c4: # Index
-          key.stagger: -3
+          key.stagger: -4
         c5: # Inner
-          key.stagger: -2
+          key.stagger: -5
       rows:
         r1: # Bottom
         r2: # Home
@@ -26,17 +26,18 @@ points:
     thumb:
       anchor:
         ref: matrix_c5_r1
-        shift: [-1.3*U, -1.05*U]
+        shift: [-1.05*U, -0.9*U]
       columns:
         c3: # Thumb-outer
+          key.splay: -9
         c4: # Thumb-middle
           key.spread: 20
           key.splay: -7
           key.origin: [-12, -9]
         c5: # Thumb-inner
           key.spread: 20
-          key.splay: -28
-          key.origin: [-10, -9]
+          key.splay: -25
+          key.origin: [-10, -8]
       rows:
         r0: # Thumb
     mcu:
@@ -84,7 +85,7 @@ points:
           - ref: thumb_c4_r0
           - ref: thumb_c5_r0
           - ref: matrix_c5_r1
-        shift: [5,2]
+        shift: [7.5,0]
     screw_5:
       key.tags:
         - helper
@@ -100,7 +101,7 @@ points:
   #   distance: 250
 
 outlines:
-  left:
+  shoedler54:
     - where: [key]
       what: rectangle
       size: [U, U]
@@ -111,8 +112,12 @@ outlines:
       points:
         - ref: matrix_c2_r1
           shift: [U/2, -U/2]
+        - ref: matrix_c3_r1
+          shift: [-U/2, -U/2]
+        - ref: matrix_c3_r1
+          shift: [3, -U/2]
         - ref: thumb_c3_r0
-          shift: [-U/2, U/2]
+          shift: [-U/2, -U/2]
         - ref: thumb_c3_r0
           shift: [-U/2, -U/2]
         - ref: thumb_c4_r0
@@ -130,7 +135,7 @@ outlines:
         - ref: matrix_c5_r4
           shift: [-U/2, U/2]
         - ref: matrix_c2_r1
-          shift: [U/2, U/2]
+          shift: [-U/2, -U/2]
   _keycaps:
     - where: [key]
       what: rectangle
@@ -155,7 +160,7 @@ outlines:
       radius: 4.3/2
   preview:
     - what: outline
-      name: left
+      name: shoedler54
     - what: outline
       name: _keycaps
       operation: stack
@@ -167,11 +172,11 @@ outlines:
       operation: stack
 
 pcbs:
-  left:
+  shoedler54:
     template: kicad8
     outlines:
       main:
-        outline: left
+        outline: shoedler54
     footprints:
       keyswitches:
         where: [key]
@@ -252,5 +257,6 @@ pcbs:
         params:
           hole_size: 4.6
           hole_drill: 2.2
+
 
 
