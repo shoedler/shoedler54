@@ -8,42 +8,42 @@ points:
       anchor:
         shift: [150, -150] # Fix KiCad placement
       columns:
-        outer:
-        pinky:
-        ring:
+        c0: # Outer
+        c1: # Pinky
+        c2: # Ring
           key.stagger: 6
-        middle:
+        c3: # Middle
           key.stagger: 4
-        index:
+        c4: # Index
           key.stagger: -3
-        inner:
+        c5: # Inner
           key.stagger: -2
       rows:
-        bottom:
-        home:
-        above:
-        top:
+        r1: # Bottom
+        r2: # Home
+        r3: # Above
+        r4: # Top
     thumb:
       anchor:
-        ref: matrix_inner_bottom
+        ref: matrix_c5_r1
         shift: [-1.3*U, -1.05*U]
       columns:
-        near:
-        home:
+        c3: # Thumb-outer
+        c4: # Thumb-middle
           key.spread: 20
           key.splay: -7
           key.origin: [-12, -9]
-        far:
+        c5: # Thumb-inner
           key.spread: 20
           key.splay: -28
           key.origin: [-10, -9]
       rows:
-        thumb:
+        r0: # Thumb
     mcu:
       key.tags:
         - helper
       anchor:
-        - ref: matrix_inner_top
+        - ref: matrix_c5_r4
           shift: [u/2+18/2+1.6,u/2-33/2]
     screw_1:
       key.tags: 
@@ -51,39 +51,39 @@ points:
         - screw
       anchor:
         aggregate.parts:
-          - ref: matrix_outer_top
-          - ref: matrix_outer_above
-          - ref: matrix_pinky_top
-          - ref: matrix_pinky_above
+          - ref: matrix_c0_r4
+          - ref: matrix_c0_r3
+          - ref: matrix_c1_r4
+          - ref: matrix_c1_r3
     screw_2:
       key.tags:
         - helper
         - screw
       anchor:
         aggregate.parts:
-          - ref: matrix_inner_top
-          - ref: matrix_inner_above
-          - ref: matrix_index_top
-          - ref: matrix_index_above
+          - ref: matrix_c5_r4
+          - ref: matrix_c5_r3
+          - ref: matrix_c4_r4
+          - ref: matrix_c4_r3
     screw_3:
       key.tags:
         - helper
         - screw
       anchor:
         aggregate.parts:
-          - ref: matrix_outer_bottom
-          - ref: matrix_outer_home
-          - ref: matrix_pinky_bottom
-          - ref: matrix_pinky_home
+          - ref: matrix_c0_r1
+          - ref: matrix_c0_r2
+          - ref: matrix_c1_r1
+          - ref: matrix_c1_r2
     screw_4:
       key.tags:
         - helper
         - screw
       anchor:
         aggregate.parts:
-          - ref: thumb_home_thumb
-          - ref: thumb_far_thumb
-          - ref: matrix_inner_bottom
+          - ref: thumb_c4_r0
+          - ref: thumb_c5_r0
+          - ref: matrix_c5_r1
         shift: [5,2]
     screw_5:
       key.tags:
@@ -91,12 +91,12 @@ points:
         - screw
       anchor:
         aggregate.parts:
-          - ref: matrix_index_home
-          - ref: matrix_index_bottom
-          - ref: matrix_middle_home
-          - ref: matrix_middle_bottom
+          - ref: matrix_c4_r2
+          - ref: matrix_c4_r1
+          - ref: matrix_c3_r2
+          - ref: matrix_c3_r1
   # mirror:
-  #   ref: matrix_pinky_home
+  #   ref: matrix_c1_r2
   #   distance: 250
 
 outlines:
@@ -109,27 +109,27 @@ outlines:
       size: [18, 33]
     - what: polygon
       points:
-        - ref: matrix_ring_bottom
+        - ref: matrix_c2_r1
           shift: [U/2, -U/2]
-        - ref: thumb_near_thumb
+        - ref: thumb_c3_r0
           shift: [-U/2, U/2]
-        - ref: thumb_near_thumb
+        - ref: thumb_c3_r0
           shift: [-U/2, -U/2]
-        - ref: thumb_home_thumb
+        - ref: thumb_c4_r0
           shift: [-U/2, -U/2]
-        - ref: thumb_far_thumb
+        - ref: thumb_c5_r0
           shift: [-U/2, -U/2]
-        - ref: thumb_far_thumb
+        - ref: thumb_c5_r0
           shift: [U/2, -U/2]
-        - ref: thumb_far_thumb
+        - ref: thumb_c5_r0
           shift: [U/2, U/2]
         - ref: mcu
           shift: [18/2,-80]
         - ref: mcu
           shift: [18/2,33/2]
-        - ref: matrix_inner_top
+        - ref: matrix_c5_r4
           shift: [-U/2, U/2]
-        - ref: matrix_ring_bottom
+        - ref: matrix_c2_r1
           shift: [U/2, U/2]
   _keycaps:
     - where: [key]
@@ -177,8 +177,8 @@ pcbs:
         where: [key]
         what: ceoloide/switch_choc_v1_v2
         params:
-          from: "{{col_net}}"
-          to: "{{colrow}}"
+          from: "{{colrow}}"
+          to: "{{col.name}}"
           hotswap: true
           choc_v1_support: false
           include_stabilizer_pad: false
@@ -204,16 +204,16 @@ pcbs:
           P3: "r1"
           P4: "r2"
           P5: "r3"
-          P2: "c1"
-          P15: "c2"
-          P18: "c3"
-          P16: "c4"
-          P8: "c5"
-          P9: "c6"
+          P2: "r4"
+          P15: "c0"
+          P18: "c1"
+          P16: "c2"
+          P8: "c3"
+          P9: "c4"
+          P19: "c5"
           P6: "DA"
           P7: "CL"
           P14: "CS"
-          P19_label: " "
           P20_label: " "
           P21_label: " "
           use_rectangular_jumpers: false
@@ -223,8 +223,8 @@ pcbs:
         params:
           reversible: true
         adjust:
-          shift: [-3,-25]
-          rotate: 0
+          shift: [-7.04,-20.5]
+          rotate: 90
       on_off_switch:
         what: ceoloide/power_switch_smd_side
         where: mcu
@@ -252,4 +252,5 @@ pcbs:
         params:
           hole_size: 4.6
           hole_drill: 2.2
+
 
