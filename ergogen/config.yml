@@ -66,6 +66,7 @@ points:
           - ref: matrix_c5_r3
           - ref: matrix_c4_r4
           - ref: matrix_c4_r3
+        shift: [0,-2.5]
     screw_3:
       key.tags:
         - helper
@@ -96,18 +97,26 @@ points:
           - ref: matrix_c4_r1
           - ref: matrix_c3_r2
           - ref: matrix_c3_r1
-  # mirror:
-  #   ref: matrix_c1_r2
-  #   distance: 250
+        shift: [0,-0.5]
+
+units: 
+  ol_pad: 1.5 # Outline Padding
 
 outlines:
   shoedler54:
     - where: [key]
       what: rectangle
-      size: [U, U]
+      size: [U+ol_pad, U+ol_pad]
     - where: [mcu]
       what: rectangle
-      size: [18, 33]
+      size: [18+ol_pad, 33]
+      # Remove the [key] padding left of the mcu 
+      # (where the switches are)
+    - what: rectangle
+      where: matrix_c5_r4
+      size: [U+ol_pad, U]
+      adjust.shift: [ol_pad, U]
+      operation: subtract
     - what: polygon
       points:
         - ref: matrix_c2_r1
@@ -117,21 +126,21 @@ outlines:
         - ref: matrix_c3_r1
           shift: [3, -U/2]
         - ref: thumb_c3_r0
-          shift: [-U/2, -U/2]
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
         - ref: thumb_c3_r0
-          shift: [-U/2, -U/2]
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
         - ref: thumb_c4_r0
-          shift: [-U/2, -U/2]
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
         - ref: thumb_c5_r0
-          shift: [-U/2, -U/2]
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
         - ref: thumb_c5_r0
-          shift: [U/2, -U/2]
+          shift: [U/2+ol_pad, -U/2-ol_pad]
         - ref: thumb_c5_r0
-          shift: [U/2, U/2]
+          shift: [U/2+ol_pad, U/2+ol_pad]
         - ref: mcu
-          shift: [18/2,-80]
+          shift: [18/2+ol_pad,-77]
         - ref: mcu
-          shift: [18/2,33/2]
+          shift: [18/2+ol_pad,33/2]
         - ref: matrix_c5_r4
           shift: [-U/2, U/2]
         - ref: matrix_c2_r1
@@ -257,6 +266,3 @@ pcbs:
         params:
           hole_size: 4.6
           hole_drill: 2.2
-
-
-
