@@ -100,7 +100,8 @@ points:
         shift: [0,-0.5]
 
 units: 
-  ol_pad: 1.5 # Outline Padding
+  ol_pad: 1.5 # Outline Padding for PCB
+  keyplate_d: 2 # Case plate. 2mm thickness for Chocs
 
 outlines:
   shoedler54:
@@ -145,7 +146,7 @@ outlines:
           shift: [-U/2, U/2]
         - ref: matrix_c2_r1
           shift: [-U/2, -U/2]
-  _keycaps:
+  _pcb_keycaps:
     - where: [key]
       what: rectangle
       size: 18
@@ -154,7 +155,7 @@ outlines:
       what: rectangle
       size: 18
       fillet: 1
-  _mcu:
+  _pcb_mcu:
     - where: [mcu]
       what: rectangle
       size: [17.78, 33]
@@ -163,21 +164,59 @@ outlines:
       size: [8.94, 7.35]
       operation: stack
       adjust.shift: [0, 33/2-7.35/2+0.7]
-  _screws:
+  _pcb_screws:
     - where: [screw]
       what: circle
       radius: 4.3/2
-  preview:
+  preview_pcb:
     - what: outline
       name: shoedler54
     - what: outline
-      name: _keycaps
+      name: _pcb_keycaps
       operation: stack
     - what: outline
-      name: _mcu
+      name: _pcb_mcu
       operation: stack
     - what: outline
-      name: _screws
+      name: _pcb_screws
+      operation: stack
+  _case_outline:
+    - what: outline
+      name: shoedler54
+      expand: 2]
+  _case_key_holes:
+    - where: [key]
+      what: rectangle
+      size: 14.2 # .2mm Padding bc 3D printing
+    - where: [thumb]
+      what: rectangle
+      size: 14.2
+  _case_screw_holes:
+    - where: [screw]
+      what: circle
+      radius: 1.1
+  _case_mcu_bat_cutout:
+    - where: [mcu]
+      what: rectangle
+      size: [19, 33]
+    - where: [mcu]
+      what: rectangle
+      size: [19, 60]
+      adjust.shift: [0, -33]
+  preview_case:
+    - what: outline
+      name: _case_outline
+    - what: outline
+      name: shoedler54
+      operation: stack
+    - what: outline
+      name: _case_key_holes
+      operation: stack
+    - what: outline
+      name: _case_screw_holes
+      operation: stack
+    - what: outline
+      name: _case_mcu_bat_cutout
       operation: stack
 
 pcbs:
@@ -266,3 +305,21 @@ pcbs:
         params:
           hole_size: 4.6
           hole_drill: 2.2
+
+cases: 
+  shoedler54:
+    - what: outline
+      name: _case_outline
+      extrude: keyplate_d
+    - what: outline
+      name: _case_key_holes
+      extrude: keyplate_d
+      operation: subtract
+    - what: outline
+      name: _case_screw_holes
+      extrude: keyplate_d
+      operation: subtract
+    - what: outline
+      name: _case_mcu_bat_cutout
+      extrude: keyplate_d
+      operation: subtract
