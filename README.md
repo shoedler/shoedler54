@@ -19,18 +19,24 @@ Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
 
 | What | Supplier | Comment | Price |
 | --- | --- | --- | --- |
-| 2 PCBs | JLCPCB | 5pcs. (min), including a hefty delivery fee to get to my location | $32 |
-| 2 MCUs | AliExpress | Promicro NRF52840, 2pcs. | $8
-| 54 Diodes | AliExpress | 1N4148W SOD-123, strip of 100 | ~$2 |
-| 54 Kailh Low 1350 Sockets | AliExpress | pack of 100 | $8 |
+| 2 PCBs | JLCPCB | 5pcs. (min), including a hefty delivery fee to get to my location, $32 | ~$13 |
+| 2 MCUs | AliExpress | Promicro NRF52840 | ~$4 |
+| 54 Diodes | AliExpress | 1N4148W SOD-123 | ~$1 |
+| 54 Kailh Low 1350 Sockets | AliExpress | Hotswap | $4 |
 | 54 Keyswitches, Choc v1/v2 | AliExpress | pack of 70 | $25 |
-| 54 1u Keycaps, Choc v1/v2 | AliExpress | pack of 60 | $25 |
-| 2 Reset Switches | AliExpress | EVQPUL02K, pack of 10 | $5 |
-| 2 Power Switches | AliExpress | SSSS811101, pack of 20 | $3 |
+| 54 1u Keycaps, Choc v1/v2 | AliExpress | pack of 60 | $15 |
+| 2 Reset Switches | AliExpress | EVQPUL02K | ~$1 |
+| 2 Power Switches | AliExpress | SSSS811101 | $1 |
 | 2 Batteries | AliExpress | 501646, 380mAh | $9 |
-| 2 JST PH 2.0 Sockets | AliExpress | Assortment Box | $3 |
+| 2 JST PH 2.0 Sockets | AliExpress | ~$1 |
+> Prices as of january, 2026
 
-Should result in ~ $100 per completed keyboard.
+Should result in ~$75 per completed keyboard. This does not include the M2 screws and printed case files, but it's all you need to get a working keyboard. Also, the prices listed are adjusted to the amount of parts required.
+
+> [!NOTE]
+> You'd want to buy some parts in "bulk", like a strip of 100 diodes. Since you likely also have a minimum order quantity for the PCBs, it might make sense to buy two more MCUs and maybe some old keyswitches and caps to get another full keyboard out of the rest of the parts and still have one PCB for soldering mistakes left ;)
+
+Another thing, there's a great deal of 3d printable keycaps, which could lower the cost of building even more.
 
 ## Modifying the ergogen config
 
