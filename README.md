@@ -1,6 +1,8 @@
 # shoedler54
 A 54-key, column-staggered, wireless split keyboard, inspired by ZSA Voyager and silakka54
 
+Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
+
 ## Bill of materials
 
 - 2 Promicro NRF52840
@@ -30,10 +32,19 @@ A 54-key, column-staggered, wireless split keyboard, inspired by ZSA Voyager and
 
 Should result in ~ $100 per completed keyboard.
 
-## Changing the ergogen config
+## Modifying the ergogen config
 
-This will force you to retrace the PCB manually again.
+The whole point of using ergogen, is to easily adapt the PCB to your liking. So give it a go!
+Modifying the config will force you to reroute the PCB again. Though fear not - using [Freerouting](www.freerouting.app) this literally takes a minute to do (including adding freerouting to KiCad), provided you have KiCad >=8 and JRE >= 17 for Freerouting already installed.
 
-1. Run `ergogen` either locally or at [ergogen.xyz](ergogen.xyz) on the `config.yml` file in `/ergogen`
-2. `mv ./ergogen/output/pcbs/shoedler54.kicad_pcb ./kicad`
-3. Open KiCad, and route the traces.
+> [!NOTE] To add the Freerouting KiCad integration, just follow [this](https://github.com/freerouting/freerouting/blob/master/docs/integrations.md) official guide.
+
+1. Paste `config.yml` located in `/ergogen` into [ergogen.xyz](ergogen.xyz) and download the `shoedler54.kicad_pcb` file.
+2. Copy (and overwrite) `shoedler54.kicad_pcb` to the `kicad` directory of this repository *(this part is only required if you intend to keep the source of this repository up to date - e.g. if you forked this)*
+3. Open the PCB in KiCad (Standalone PCB editor suffices) and click on `Tools > External Plugins > Freerouting`
+4. Let it rip. In my experience, the defaults of Freerouting suffice.
+
+> [!IMPORTANT] Back in KiCad, run the DRC in `Inspect > Design Rule Checker`. I usually right click `> Ignore all 'Footprint not found in libraries' violations` to ignore missing ceoloide footprint warnings. This might leave you with some warnings which you need to manually resolve. For example, i usually get "Track has unconnected end", which is easily resolved by deleting the stub.
+
+5. `File > Plot... > Generate Drill Files`, name the folder "gerber", then press `Generate` and close that popup. Press `Plot` back in the plot dialog. Done!
+
