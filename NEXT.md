@@ -1,0 +1,6 @@
+- [ ] Use a ground plane
+- [ ] Make vcc and ground traces .3 instead of .2 mil
+- [ ] I think I actually like choc spacing better than mx spacing. It just seems like mx spacing is more strain on my hands.
+- [ ] Also, Kailh choc red & browns have too much resistance(!) - they are both 50g.
+- [ ] Bigger traces generally. 
+- [ ] Gateron KS-33 banana switches.
