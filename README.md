@@ -3,6 +3,9 @@ A 54-key, column-staggered, wireless split keyboard, inspired by ZSA Voyager and
 
 Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
 
+> [!WARNING]
+> This is still in development - DO NOT BUILD THIS YET!
+
 ## Bill of materials
 
 - 2 Promicro NRF52840
