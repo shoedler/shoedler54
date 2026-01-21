@@ -1,0 +1,370 @@
+
+meta:
+  engine: 4.2.0
+points:
+  key.spacing: U
+  key.tags: key
+  zones:
+    matrix:
+      anchor:
+        shift: [150, -150] # Fix KiCad placement
+      columns:
+        c0: # Outer
+        c1: # Pinky
+        c2: # Ring
+          key.stagger: 8
+        c3: # Middle
+          key.stagger: 4
+        c4: # Index
+          key.stagger: -4
+        c5: # Inner
+          key.stagger: -5
+      rows:
+        r1: # Bottom
+        r2: # Home
+        r3: # Above
+        r4: # Nums
+    thumb:
+      anchor:
+        ref: matrix_c5_r1
+        shift: [-1.05*U, -0.9*U]
+      columns:
+        c3: # Thumb-outer
+          key.splay: -9
+        c4: # Thumb-middle
+          key.spread: 20
+          key.splay: -7
+          key.origin: [-12, -9]
+        c5: # Thumb-inner
+          key.spread: 20
+          key.splay: -25
+          key.origin: [-10, -8]
+      rows:
+        r0: # Thumb
+    mcu:
+      key.tags:
+        - helper
+      anchor:
+        - ref: matrix_c5_r4
+          shift: [u/2+18/2+1.6,u/2-33/2]
+    screw_1:
+      key.tags: 
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c0_r4
+          - ref: matrix_c0_r3
+          - ref: matrix_c1_r4
+          - ref: matrix_c1_r3
+    screw_2:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c5_r4
+          - ref: matrix_c5_r3
+          - ref: matrix_c4_r4
+          - ref: matrix_c4_r3
+        shift: [0,-2.5]
+    screw_3:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c0_r1
+          - ref: matrix_c0_r2
+          - ref: matrix_c1_r1
+          - ref: matrix_c1_r2
+    screw_4:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: thumb_c4_r0
+          - ref: thumb_c5_r0
+          - ref: matrix_c5_r1
+        shift: [7.5,0]
+    screw_5:
+      key.tags:
+        - helper
+        - screw
+      anchor:
+        aggregate.parts:
+          - ref: matrix_c4_r2
+          - ref: matrix_c4_r1
+          - ref: matrix_c3_r2
+          - ref: matrix_c3_r1
+        shift: [0,-0.5]
+
+units: 
+  ol_pad: 1.5 # Outline Padding
+  keyplate_d: 2.2 # 2.2mm thickness for Chocs
+
+outlines:
+  shoedler54:
+    - where: [key]
+      what: rectangle
+      size: [U+ol_pad, U+ol_pad]
+    - where: [mcu]
+      what: rectangle
+      size: [18+ol_pad, 33]
+    - what: rectangle # Removes the [key] padding left of the mcu 
+      where: matrix_c5_r4 # (where the switches are)
+      size: [U+ol_pad, U]
+      adjust.shift: [ol_pad, U]
+      operation: subtract
+    - what: polygon
+      points:
+        - ref: matrix_c2_r1
+          shift: [U/2, -U/2]
+        - ref: matrix_c3_r1
+          shift: [-U/2, -U/2]
+        - ref: matrix_c3_r1
+          shift: [3, -U/2]
+        - ref: thumb_c3_r0
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
+        - ref: thumb_c3_r0
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
+        - ref: thumb_c4_r0
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
+        - ref: thumb_c5_r0
+          shift: [-U/2-ol_pad, -U/2-ol_pad]
+        - ref: thumb_c5_r0
+          shift: [U/2+ol_pad, -U/2-ol_pad]
+        - ref: thumb_c5_r0
+          shift: [U/2+ol_pad, U/2+ol_pad]
+        - ref: mcu
+          shift: [18/2+ol_pad,-77]
+        - ref: mcu
+          shift: [18/2+ol_pad,33/2]
+        - ref: matrix_c5_r4
+          shift: [-U/2, U/2]
+        - ref: matrix_c2_r1
+          shift: [-U/2, -U/2]
+  _pcb_keycaps:
+    - where: [key]
+      what: rectangle
+      size: 18
+      fillet: 1
+    - where: [thumb]
+      what: rectangle
+      size: 18
+      fillet: 1
+  _pcb_mcu:
+    - where: [mcu]
+      what: rectangle
+      size: [17.78, 33]
+    - where: [mcu]
+      what: rectangle
+      size: [8.94, 7.35]
+      operation: stack
+      adjust.shift: [0, 33/2-7.35/2+0.7]
+  _pcb_screws:
+    - where: [screw]
+      what: circle
+      radius: 4.3/2
+  preview_pcb:
+    - what: outline
+      name: shoedler54
+    - what: outline
+      name: _pcb_keycaps
+      operation: stack
+    - what: outline
+      name: _pcb_mcu
+      operation: stack
+    - what: outline
+      name: _pcb_screws
+      operation: stack
+  _case_plate:
+    - what: outline
+      name: shoedler54
+      expand: 3]
+  _case_plate_border:
+    - what: outline
+      name: shoedler54
+      expand: 3]
+    - what: outline
+      name: shoedler54
+      operation: subtract
+  _case_key_holes:
+    - where: [key]
+      what: rectangle
+      size: 14.2 # .2mm Padding bc 3D printing
+    - where: [thumb]
+      what: rectangle
+      size: 14.2
+  _case_screw_holes:
+    - where: [screw]
+      what: circle
+      radius: 1.1
+  _case_mcu_cutout:
+    - where: [mcu]
+      what: rectangle
+      size: [17.78, 33]
+  _case_mcu_usb_cutout:
+    - where: [mcu]
+      what: rectangle
+      size: [8.94 + 3, 10] # 3mm l/r pad
+      adjust.shift: [0, 33/2]
+  _case_bat_cutout:
+    - where: [mcu]
+      what: rectangle
+      size: [3.2, 7]
+      adjust.shift: [-17.78/2+3.2/2, -33/2-7/2+0.1]
+      operation: stack
+    - where: [mcu]
+      what: rectangle
+      size: [17, 51]
+      adjust.shift: [3.2-(17.78-17)/2 , -33/2-51/2]
+  _case_key_plate:
+    - what: outline
+      name: _case_plate
+    - what: outline
+      name: _case_key_holes
+      operation: subtract
+    - what: outline
+      name: _case_screw_holes
+      operation: subtract
+    - what: outline
+      name: _case_mcu_cutout
+      operation: subtract
+    - what: outline
+      name: _case_bat_cutout
+      operation: subtract
+    - what: outline
+      name: _case_mcu_usb_cutout
+      operation: subtract
+  _case_mcu_bat_mask:
+    - where: [mcu]
+      what: rectangle
+      size: [120, 130]
+      adjust.shift: [-70.3, -30]
+    - where: [mcu]
+      what: rectangle
+      size: [40, 40]
+      adjust.shift: [0,-88.5]      
+    - where: [mcu]
+      what: rectangle
+      size: [10,20]
+      adjust.shift: [-11, -70]
+      adjust.rotate: 25
+  _case_mcu_bat_plate:
+    - what: outline
+      name: _case_plate
+    - what: outline
+      name: _case_mcu_cutout
+      operation: subtract
+    - what: outline
+      name: _case_bat_cutout
+      operation: subtract
+    - what: outline
+      name: _case_mcu_bat_mask
+      operation: subtract
+  preview_case:
+    - what: outline
+      name: _case_key_plate
+    - what: outline
+      name: _pcb_keycaps
+      operation: stack
+    - what: outline
+      name: _case_mcu_bat_plate
+      operation: stack
+
+pcbs:
+  shoedler54:
+    template: kicad8
+    outlines:
+      main:
+        outline: shoedler54
+    footprints:
+      keyswitches:
+        where: [key]
+        what: ceoloide/switch_choc_v1_v2
+        params:
+          from: "{{colrow}}"
+          to: "{{col.name}}"
+          hotswap: true
+          choc_v1_support: true
+          include_stabilizer_pad: false
+          include_plated_holes: false
+          locked_traces_vias: true
+          reversible: true
+        adjust.rotate: 180
+      diodes:
+        where: /key/
+        what: ceoloide/diode_tht_sod123
+        params:
+          from: "{{colrow}}"
+          to: "{{row}}"
+          reversible: true
+          include_traces_vias: true
+        adjust.shift: [0, 3.5]
+        adjust.rotate: 180
+      mcu:
+        what: ceoloide/mcu_supermini_nrf52840
+        where: mcu
+        params:
+          reversible: true
+          only_required_jumpers: true
+          P10: "r0"
+          P3: "r1"
+          P4: "r2"
+          P5: "r3"
+          P2: "r4"
+          P15: "c0"
+          P18: "c1"
+          P16: "c2"
+          P8: "c3"
+          P9: "c4"
+          P19: "c5"
+          P6: "DA"
+          P7: "CL"
+          P14: "CS"
+          P20_label: " "
+          P21_label: " "
+          use_rectangular_jumpers: false
+      battery_connector:
+        what: ceoloide/battery_connector_jst_ph_2
+        where: mcu
+        params:
+          reversible: true
+        adjust:
+          shift: [-7.04,-20.5]
+          rotate: 90
+      on_off_switch:
+        what: ceoloide/power_switch_smd_side
+        where: mcu
+        params:
+          from: BAT_P
+          to: RAW
+          reversible: true
+        adjust:
+          shift: [-15, 33/2-2]
+          rotate: 90
+      reset_switch:
+        what: ceoloide/reset_switch_smd_side
+        where: mcu
+        params:
+          reversible: true
+          include_bosses: true
+          include_silkscreen: true
+          include_courtyard: true
+        adjust:
+          shift: [-25, 33/2-2.5]
+          rotate: 0
+      screws:
+        what: ceoloide/mounting_hole_npth
+        where: /screw/
+        params:
+          hole_size: 4.6
+          hole_drill: 2.2
+
+cases:
+  case_key_plate:
+    - what: outline
+      name: _case_key_plate
+      extrude: keyplate_d

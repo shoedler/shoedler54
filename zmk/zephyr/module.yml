@@ -1,4 +1,0 @@
-name: zmk-keyboard-shoedler54
-build:
-  settings:
-    board_root: .
