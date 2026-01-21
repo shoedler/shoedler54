@@ -1,0 +1,12 @@
+file_format: "1"
+id: shoedler54
+name: shoedler54
+type: shield
+url: https://github.com/shoedler/shoedler54
+requires: [nice_nano_v2]
+features:
+  - keys
+  - studio
+siblings:
+  - shoedler54_left
+  - shoedler54_right

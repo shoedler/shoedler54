@@ -1,0 +1,24 @@
+#include "shoedler54.dtsi"
+
+&kscan0 {
+    row-gpios
+        = <&pro_micro 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ergogen r4 "Nums"
+        , <&pro_micro 5  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ergogen r3 "Above"
+        , <&pro_micro 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ergogen r2 "Home"
+        , <&pro_micro 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ergogen r1 "Bottom"
+        , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ergogen r0 "Thumb"
+        ;
+
+    col-gpios
+        = <&pro_micro 15 GPIO_ACTIVE_HIGH> // ergogen c0 "Outer"
+        , <&pro_micro 18 GPIO_ACTIVE_HIGH> // ergogen c1 "Pinky"
+        , <&pro_micro 16 GPIO_ACTIVE_HIGH> // ergogen c2 "Ring"
+        , <&pro_micro 8  GPIO_ACTIVE_HIGH> // ergogen c3 "Middle"
+        , <&pro_micro 9  GPIO_ACTIVE_HIGH> // ergogen c4 "Index"
+        , <&pro_micro 19 GPIO_ACTIVE_HIGH> // ergogen c5 "Inner"
+        ;
+};
+
+&default_transform {
+    col-offset = <6>;
+};
