@@ -5,6 +5,6 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
-      build_matrix_path: zmk/build.yml
+      build_matrix_path: 'load("zmk/build.yml")'
       config_path: zmk/config
       archive_name: shoedler54_firmware
