@@ -381,11 +381,11 @@ pcbs:
           hole_drill: 2.2
 
 cases:
-  case_key_plate:
+  shoedler54_case_key_plate:
     - what: outline
       name: _case_plate
       extrude: keyplate_d
-  case_left:
+  shoedler54_case_left:
     - what: outline
       name: _case_bottom
       extrude: case_bottom_t
