@@ -7,11 +7,10 @@ Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
 
 ## Why?
 
-This project came to life as I wanted to get up to speed with [ergogen.xyz](ergogen.xyz). The main goal of this keyboard was to build it using solely the declarative ergogen paradigm - including making a case. As such, the only thing that was done outside of ergogen was to route the PCB and flip one case half in the slicer. That, as well as configuring the firmware (it'd be a nice extension to ergogen to generate the `.dtsi` file for ZMK automatically, but alas, that's not supported - yet).
-Other things I've aimed for, unordered:
+This project came to life as I wanted to get up to speed with [ergogen.xyz](ergogen.xyz). The main goal of was to build a keyboard using solely the declarative ergogen paradigm - including making a case. As such, the only thing that was done outside of ergogen was to route the PCB and flip one case half in the slicer. That, as well as configuring the firmware (it'd be a nice extension to ergogen to generate the `.dtsi` file for ZMK automatically, but alas, that's not supported - yet).
+Other things I've aimed for:
 - Must be cheap, < $100 for a complete keyboard.
 - Must be low profile, comparable to the ZSA Voyager.
-- Must 
 
 ## Bill of materials
 
@@ -79,12 +78,16 @@ Since the PCB is reversible it can get confusing quick. All of the components **
 1. Solder diodes, hotswap sockets, reset- and powerswitches on the backside of each half.
 2. Direct-solder the ProMicro to the frontside of the PCB, along with the JST connector. (Pin Sockets are also an option for the mcu, if you want - it just makes the keyboard a bit thicker)
 
-> ![WARNING]
+> [!WARNING]
 > Before you continue it's a good idea to verify that there's no short between the JSTs +/- terminal as well as the ProMicros VCC and GND.
 
 I suggest to load the firmware and check that everything works before assembly.
 
-### Loading the firmware
+### Loading the ZMK firmware
+
+> Firmware related files consist of: config/, boards/, zephyr/ directories, as well as the build.yml file and the GitHub Actions workflow in .github/workflows.build.yml
+
+Get the latest firmware from https://github.com/shoelder/shoedler54/actions, select the latest run and scroll down to Artifacts - you'll be able to download the zip archive from there.
 
 For each half:
 
