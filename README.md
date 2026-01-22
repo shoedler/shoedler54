@@ -122,4 +122,7 @@ Modifying the config will force you to reroute the PCB again. Though fear not - 
 ## References
 
 - Flatfootfox' detailed design guide: https://flatfootfox.com/ergogen-part1-units-points/
+- nickcoutsos Keymap-editor: https://nickcoutsos.github.io/keymap-editor/
+- nickcoutsos Keymap-layout-tools: https://nickcoutsos.github.io/keymap-layout-tools/
+- Joel Spadins zmk-locale-generator for the de-swiss keycode header: https://github.com/joelspadin/zmk-locale-generator
 - ZMK guide on how to add a new shield: https://zmk.dev/docs/development/hardware-integration/new-shield
