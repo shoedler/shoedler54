@@ -1,3 +1,4 @@
 **/output/**/*
 .zmk/
+temp.*
 fp-info-cache

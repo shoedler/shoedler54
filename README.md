@@ -14,6 +14,8 @@ Other things I've aimed for:
 
 ## Bill of materials
 
+For one complete board - e.g. two halves - you'll need:
+
 - 2 Promicro NRF52840
 - 54 1N4148W SOD-123 Diodes
 - 54 Kailh Low-profile 1350 Hotswap Sockets
@@ -26,10 +28,10 @@ Other things I've aimed for:
 
 For the case you'll need:
 
-- Obviously, the printed out case files. The key plate can be printed twice as it is reversible. The case must be mirrored in your slicer of choice for the right half. 
+- Obviously, the printed out case files. The key plate can be printed twice as it is reversible. The case must be mirrored in your slicer of choice for the right half. For convenience, I've added *.3mf files which includes a mirrored version of the plate and the case. The case also has the fuzzy skin applied.
 - 10x M2x5 (or 6)mm flathead screws
 - 10x M2x3mm Heat set inserts
-- Optionally some 1-2mm thick sheets of EVA or Neoprene or simliar
+- Optionally some painters tape.
 
 ## Approximate cost
 

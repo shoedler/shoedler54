@@ -104,7 +104,6 @@ units:
   keyplate_d: 2.2 # 2.2mm thickness for Chocs
   mcu_w: 17.78 # ProMicro width
   mcu_h: 33 # ProMicro height
-  case_t: 4 # Case (wall) thickness
   case_bottom_t: 2 # Case (bottom) thickness
 
 outlines:
@@ -186,11 +185,6 @@ outlines:
     - where: [mcu]
       what: rectangle
       size: [mcu_w, mcu_h]
-  _case_mcu_usb_cutout:
-    - where: [mcu]
-      what: rectangle
-      size: [8.94 + 4, 10] # 4mm l/r pad
-      adjust.shift: [0, mcu_h/2]
   _case_bat_cutout:
     - where: [mcu]
       what: rectangle
@@ -234,9 +228,6 @@ outlines:
       name: _case_mcu_cutout
       operation: subtract
     - what: outline
-      name: _case_mcu_usb_cutout
-      operation: subtract
-    - what: outline
       name: _case_bat_cutout
       operation: subtract
     - what: rectangle # Mask to remove floater
@@ -247,11 +238,11 @@ outlines:
   _case_bottom:
     - what: outline
       name: shoedler54
-      expand: case_t
+      expand: 3
   _case_pcb_mask:
     - what: outline
       name: shoedler54
-      expand: 0.8
+      expand: 0.7
       joints: pointy
   _case_wall:
     - what: outline
@@ -259,17 +250,20 @@ outlines:
     - what: outline
       name: _case_pcb_mask
       operation: subtract
-  _case_wall_without_io:
-    - what: outline
-      name: _case_wall
-    - what: outline
-      name: _case_mcu_usb_cutout
-      operation: subtract
-    - what: rectangle # Reset & power switch
+  _case_wall_io_mask:
+    - what: rectangle # Reset switch
       where: [mcu]
-      size: [30, 15]
-      adjust.shift: [-14,20]
-      operation: subtract
+      size: [4.6, 10]
+      adjust.shift: [-25.9, 22.2]
+    - where: [mcu] # USB-C
+      what: rectangle
+      size: [8.94 + 4, 5] # 4mm l/r pad
+      adjust.shift: [0, 19.7]
+  _case_wall_power_sw_mask:
+    - what: rectangle # Power switch
+      where: [mcu]
+      size: [17.2,5]
+      adjust.shift: [-15, 19.7]
   _case_screw_holes:
     - what: circle
       where: [screw]
@@ -277,7 +271,7 @@ outlines:
   _case_screw_standoffs:
     - what: circle
       where: [screw]
-      radius: 2.6
+      radius: 3.1
     - what: outline
       name: _case_screw_holes
       operation: subtract
@@ -286,6 +280,15 @@ outlines:
       name: _case_plate
     - what: outline
       name: _case_wall
+      operation: stack
+    - what: outline
+      name: _case_screw_standoffs
+      operation: stack
+    - what: outline
+      name: _case_wall_io_mask
+      operation: stack    
+    - what: outline
+      name: _case_wall_power_sw_mask
       operation: stack
     - what: outline
       name: _pcb_keycaps
@@ -385,6 +388,20 @@ cases:
     - what: outline
       name: _case_plate
       extrude: keyplate_d
+
+  _shoedler54_case_left_io_segment:
+    - what: outline
+      name: _case_wall 
+      extrude: case_bottom_t + 2.5 + 1.6 + keyplate_d
+    - what: outline
+      name: _case_wall_io_mask
+      extrude: case_bottom_t + 2.5 - 1.5
+      operation: intersect
+    - what: outline
+      name: _case_wall_power_sw_mask
+      extrude: 10
+      operation: subtract
+
   shoedler54_case_left:
     - what: outline
       name: _case_bottom
@@ -400,9 +417,22 @@ cases:
     - what: outline
       name: _case_screw_standoffs
       extrude: case_bottom_t + 2.5 # For 3mm deep inserts
+    
+    # Add the wall...
     - what: outline
       name: _case_wall 
-      extrude: case_bottom_t + 2.5 - 1.5 # Up to the switches, ~1.5mm thick
+      extrude: case_bottom_t + 2.5 + 1.6 + keyplate_d
+
+    # ...then subtract the io mask 
     - what: outline
-      name: _case_wall_without_io
-      extrude: case_bottom_t + 2.5 + 1.6 + keyplate_d + 2 # 1.6=PCB t, 2mm over plate
+      name: _case_wall_io_mask
+      extrude: 10
+      operation: subtract
+    - what: outline
+      name: _case_wall_power_sw_mask
+      extrude: 10
+      operation: subtract
+
+    # ...and add back the io wall segment
+    - what: case
+      name: _shoedler54_case_left_io_segment
