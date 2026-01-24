@@ -2,6 +2,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include "keys_de_swiss.h"
 
+&lt { tapping-term-ms = <150>; };
+
 / {
     behaviors {
         khkp: khkp {
@@ -19,21 +21,21 @@
 
         main {
             bindings = <
-&khkp DELETE ESCAPE  &kp N1            &kp N2  &kp N3    &kp N4     &kp N5           &kp N6                 &kp N7       &kp N8     &kp N9   &kp N0                 &kp SINGLE_QUOTE
-&kp CAPSLOCK         &kp Q             &kp W   &kp E     &kp R      &kp T            &kp Y                  &kp U        &kp I      &kp O    &kp P                  &kp BACKSLASH
-&kp LEFT_SHIFT       &kp A             &kp S   &kp D     &kp F      &kp G            &kp H                  &kp J        &kp K      &kp L    &kp SEMI               &khkp RIGHT_SHIFT DE_UMLAUT
-&kp LEFT_CONTROL     &khkp LEFT_ALT Z  &kp X   &kp C     &kp V      &kp B            &kp N                  &kp M        &kp COMMA  &kp DOT  &khkp RIGHT_ALT SLASH  &kp RCTRL
-                                               &kp LGUI  &lt 1 RET  &khkp LCTRL TAB  &khkp LSHFT BACKSPACE  &lt 2 SPACE  &kp RGUI
+&khkp DEL ESC  &kp DE_N1        &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5  &kp DE_N6             &kp DE_N7         &kp DE_N8     &kp DE_N9   &kp DE_N0           &kp DE_SQT
+&kp CAPS       &kp DE_Q         &kp DE_W   &kp DE_E   &kp DE_R   &kp DE_T   &kp DE_Y              &kp DE_U          &kp DE_I      &kp DE_O    &kp DE_P            &kp DE_BSLSH
+&kp LSHIFT     &kp DE_A         &kp DE_S   &kp DE_D   &kp DE_F   &kp DE_G   &kp DE_H              &kp DE_J          &kp DE_K      &kp DE_L    &kp DE_SEMI         &khkp RSHIFT DE_UMLAUT
+&kp LCTRL      &khkp LALT DE_Z  &kp DE_X   &kp DE_C   &kp DE_V   &kp DE_B   &kp DE_N              &kp DE_M          &kp DE_COMMA  &kp DE_DOT  &khkp RALT DE_FSLH  &kp RCTRL
+                                                      &kp LGUI   &lt 1 RET  &khkp LCTRL TAB       &khkp LSHFT BSPC  &lt 2 SPACE   &kp RGUI
             >;
         };
 
         sym {
             bindings = <
-&trans        &none      &none          &none           &none                 &studio_unlock    &none              &none                  &none            &none             &none          &none
-&kp PERCENT   &none      &none          &none           &none                 &none             &none              &none                  &none            &none             &none          &kp CARET
-&kp DE_ACUTE  &kp SLASH  &kp LESS_THAN  &kp LEFT_BRACE  &kp LEFT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp GREATER_THAN  &kp BACKSLASH  &kp GRAVE
-&kp TILDE     &kp AT     &kp POUND      &kp STAR        &kp PLUS              &kp EXCL          &kp QUESTION       &kp MINUS              &kp UNDER        &kp EQUAL         &kp PIPE       &kp SINGLE_QUOTE
-                                        &trans          &trans                &trans            &trans             &trans                 &trans
+&trans        &none         &none        &none        &none        &studio_unlock       &none         &none         &none         &none         &none         &none
+&kp DE_PRCNT  &none         &none        &none        &none        &none                &none         &none         &none         &none         &none         &kp DE_CARET
+&kp DE_ACUTE  &kp DE_FSLSH  &kp DE_LT    &kp DE_LBRC  &kp DE_LPAR  &kp DE_LBTK          &kp DE_RBKT   &kp DE_RPAR   &kp DE_RBRC   &kp DE_GT     &kp DE_BSLSH  &kp DE_GRAVE
+&kp DE_TILDE  &kp DE_AT     &kp DE_HASH  &kp DE_STAR  &kp DE_PLUS  &kp DE_EXCL          &kp DE_QMARK  &kp DE_MINUS  &kp DE_UNDER  &kp DE_EQUAL  &kp DE_PIPE   &kp DE_SQT
+                                         &trans       &trans       &trans               &trans        &trans        &trans
             >;
         };
 
