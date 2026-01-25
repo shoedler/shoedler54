@@ -48,12 +48,12 @@ mx_leg_thick     = 1.25;  // thickness of each leg
 mx_inner_fillet  = 0.3;   // fillet radius for inside corners
 
 /* Homing indicator (optional) */
-enable_homing    = false;   // set true for F/J
-homing_len       = 5.0;    // bar length (X)
-homing_w         = 0.7;    // bar width (Y)
-homing_h         = 0.5;    // bar height (Z)
-homing_offset_y  = -2;     // move bump toward you (negative Y) like typical F/J
-homing_offset_z  = 1.001;  // move bump into/away from the keycap
+enable_homing    = false;  // set true for F/J
+homing_len       = 5.0;   // bar length (X)
+homing_w         = 0.7;   // bar width (Y)
+homing_h         = 0.5;   // bar height (Z)
+homing_offset_x  = -2;    // move bump toward you (negative X) like typical F/J
+homing_offset_z  = 1.1;   // move bump into/away from the keycap
 
 // -------------------------
 // Helpers
@@ -182,7 +182,8 @@ module stem_post_with_mx_hole() {
 module homing_bump() {
   if (enable_homing) {
     // put it on the top surface, slightly sunk into the dish cut region.
-    translate([0, homing_offset_y, cap_thickness - homing_offset_z])
+    translate([homing_offset_x, 0, cap_thickness - homing_offset_z])
+      rotate([0, 0, 90])
       linear_extrude(height=homing_h)
         capsule_2d(homing_len, homing_w);
   }
