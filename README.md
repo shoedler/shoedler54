@@ -1,3 +1,5 @@
+![20260125_213825](https://github.com/user-attachments/assets/75746ba9-ead4-41b1-9cbb-e99ea7ad79c7)
+
 # shoedler54
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
 Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
@@ -91,10 +93,10 @@ Since the PCB is reversible it can get confusing quick. All of the components **
 1. Solder diodes, hotswap sockets, reset- and powerswitches on the backside of each half.
 2. Direct-solder the ProMicro to the frontside of the PCB, along with the JST connector. (Pin Sockets are also an option for the mcu, if you want - it just makes the keyboard a bit thicker)
 
-> [!WARNING]
+> [!CAUTION]
 > Before you continue it's a good idea to verify that there's no short between the JSTs +/- terminal as well as the ProMicros VCC and GND.
 
-I suggest to load the firmware and check that everything works before assembly.
+I suggest to load the firmware next and check that everything works before assembly.
 
 ### Loading the ZMK firmware
 
@@ -115,9 +117,26 @@ For each half:
 
 1. Prep the cases by installing the heat set inserts.
 2. Cover the bottom sides of the PCBs with tape (I used masking tape). Apply the first layer quite firmly, such that it follows the contours of the hotswap sockets. You'll want to make sure that you extend the tape over the edges of the PCB. Apply at least 3 layers.
+
+![20260123_114036](https://github.com/user-attachments/assets/e35ec1e6-6376-497a-b4d6-04bafde0ce18)
+  
 3. Trace the PCB outline to the tape with a pen. Also, trace the screw holes.
-4. Remove the tape, and cut out the shape - make sure to inset the cut about 2-3mm, so the tape is not visible when everything is assembled. For the screw holes, cut a ~5x5mm square.
-5. Apply the tape and assemble both halves.
+
+![20260123_114252](https://github.com/user-attachments/assets/16342578-8af7-46aa-a2b5-787bbc1b2cea)
+
+4. Remove the tape, and cut out the shape - make sure to inset the cut about 2-3mm, so the tape is not visible when everything is assembled. For the screw holes, cut a ~5x5mm square. Apply the tape.
+
+![20260123_114930](https://github.com/user-attachments/assets/fbe66759-2e7c-460d-af11-5f3990013059)
+
+5. Assemble both halves.
+
+![20260124_222032](https://github.com/user-attachments/assets/6558935a-2e34-4053-a9d4-958fcc821ed6)
+
+6. Install the switches, caps and the battery - done!
+
+![20260124_222812](https://github.com/user-attachments/assets/ebcb15c5-88f6-4532-9fd1-ce5da38888c0)
+
+---
 
 ## Modifying the ergogen config
 
