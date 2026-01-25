@@ -2,9 +2,6 @@
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
 Designed for Mx-spacing (19*19mm keycaps) and 1350 Choc v1 or v2 switches.
 
-> [!WARNING]
-> This is still in development - DO NOT BUILD THIS YET!
-
 ## Why?
 
 This project came to life as I wanted to get up to speed with [ergogen.xyz](ergogen.xyz). The main goal of was to build a keyboard using solely the declarative ergogen paradigm - including making a case. As such, the only thing that was done outside of ergogen was to route the PCB and flip one case half in the slicer. That, as well as configuring the firmware (it'd be a nice extension to ergogen to generate the `.dtsi` file for ZMK automatically, but alas, that's not supported - yet).
@@ -105,6 +102,9 @@ I suggest to load the firmware and check that everything works before assembly.
 
 Get the latest firmware from https://github.com/shoelder/shoedler54/actions, select the latest run and scroll down to Artifacts - you'll be able to download the zip archive from there.
 
+> [!NOTE]
+> There'll be two .uf2 files per half in the zip archive - a `de-ch` and an `en` version. This refers to the keycode locale that's been used. I myself require a swiss locale, but, to make the default firmware more useful for more people, I've added an english version too. You can check the keymaps out in the `config/boards/shields/shoedler54` directory.
+
 For each half:
 
 1. Plug in the half to your device using a USB cable.
@@ -113,9 +113,11 @@ For each half:
 
 ### Assembly
 
-1. Prep the cases by installing the heat set inserts and your optional sheets of foam.
-2. At this point you might want to [tape-mod](https://typingdonewell.com/blog/keyboard-pcb-tape-mod-what-is-it-and-is-it-worth-it/) the PCB backsides.
-3. Assemble both halves.
+1. Prep the cases by installing the heat set inserts.
+2. Cover the bottom sides of the PCBs with tape (I used masking tape). Apply the first layer quite firmly, such that it follows the contours of the hotswap sockets. You'll want to make sure that you extend the tape over the edges of the PCB. Apply at least 3 layers.
+3. Trace the PCB outline to the tape with a pen. Also, trace the screw holes.
+4. Remove the tape, and cut out the shape - make sure to inset the cut about 2-3mm, so the tape is not visible when everything is assembled. For the screw holes, cut a ~5x5mm square.
+5. Apply the tape and assemble both halves.
 
 ## Modifying the ergogen config
 
