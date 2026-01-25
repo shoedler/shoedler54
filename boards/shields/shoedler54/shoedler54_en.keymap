@@ -1,0 +1,55 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+&lt { tapping-term-ms = <150>; };
+
+/ {
+    behaviors {
+        khkp: khkp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KHKP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        main {
+            bindings = <
+&khkp DEL ESC  &kp N1        &kp N2  &kp N3    &kp N4     &kp N5                &kp N6            &kp N7       &kp N8     &kp N9   &kp N0            &kp SQT
+&kp CAPS       &kp Q         &kp W   &kp E     &kp R      &kp T                 &kp Y             &kp U        &kp I      &kp O    &kp P             &kp BSLH
+&kp LSHIFT     &kp A         &kp S   &kp D     &kp F      &kp G                 &kp H             &kp J        &kp K      &kp L    &kp SEMI          &khkp RSHIFT SQT
+&kp LCTRL      &khkp LALT Z  &kp X   &kp C     &kp V      &kp B                 &kp N             &kp M        &kp COMMA  &kp DOT  &khkp RALT SLASH  &kp RCTRL
+                                     &kp LGUI  &lt 1 RET  &khkp LCTRL TAB       &khkp LSHFT BSPC  &lt 2 SPACE  &kp RGUI
+            >;
+        };
+
+        sym {
+            bindings = <
+&trans     &none    &none    &none    &none    &studio_unlock  &none    &none    &none    &none    &none   &none
+&kp PRCNT  &none    &none    &none    &none    &none           &none    &none    &none    &none    &none   &kp CARET
+&kp GRAVE  &kp SLASH  &kp LT  &kp LBRC  &kp LPAR  &kp LBKT      &kp RBKT  &kp RPAR  &kp RBRC  &kp GT   &kp BSLH  &kp GRAVE
+&kp TILDE  &kp AT    &kp HASH  &kp STAR  &kp PLUS  &kp EXCL     &kp QMARK  &kp MINUS  &kp UNDER  &kp EQUAL  &kp PIPE  &kp SQT
+                                    &trans   &trans   &trans   &trans   &trans   &trans
+            >;
+        };
+
+        sys {
+            bindings = <
+&none  &kp F1  &kp F2        &kp F3            &kp F4           &kp F5       &kp F6           &kp F7           &kp F8           &kp F9     &kp F10  &kp F11
+&none  &none   &kp C_VOL_DN  &kp K_MUTE        &kp C_VOLUME_UP  &none        &kp HOME         &kp PG_UP        &kp PG_DN        &kp END    &none    &none
+&none  &none   &kp K_PREV    &kp K_PLAY_PAUSE  &kp K_NEXT       &none        &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT  &none    &none
+&none  &none   &none         &kp K_BACK        &kp K_FORWARD    &none        &kp PRINTSCREEN  &kp LC(LS(TAB))  &kp LC(LS(TAB))  &none      &none    &none
+                             &none             &none            &none        &none            &none            &none
+            >;
+        };
+
+        extra1 { status = "reserved"; };
+
+        extra2 { status = "reserved"; };
+    };
+};
