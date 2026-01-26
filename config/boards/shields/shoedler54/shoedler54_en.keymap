@@ -23,7 +23,7 @@
             bindings = <
 &trans     &none     &none     &none     &none     &none          &none      &none      &none      &none      &none     &none
 &kp PRCNT  &none     &none     &none     &none     &none          &none      &none      &none      &none      &none     &kp CARET
-&kp GRAVE  &kp FLSH  &kp LT    &kp LBRC  &kp LPAR  &kp LBKT       &kp RBKT   &kp RPAR   &kp RBRC   &kp GT     &kp BSLH  &kp GRAVE
+&kp GRAVE  &kp FSLH  &kp LT    &kp LBRC  &kp LPAR  &kp LBKT       &kp RBKT   &kp RPAR   &kp RBRC   &kp GT     &kp BSLH  &kp GRAVE
 &kp TILDE  &kp AT    &kp HASH  &kp STAR  &kp PLUS  &kp EXCL       &kp QMARK  &kp MINUS  &kp UNDER  &kp EQUAL  &kp PIPE  &kp SQT
                                &trans    &trans    &trans         &trans     &trans     &trans
             >;
