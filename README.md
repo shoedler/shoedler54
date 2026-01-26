@@ -1,4 +1,4 @@
-![20260125_213825](https://github.com/user-attachments/assets/75746ba9-ead4-41b1-9cbb-e99ea7ad79c7)
+![20260124_222812 1](https://github.com/user-attachments/assets/c4c6f7a0-cb5c-440a-8e7c-71c50f169e8c)
 
 # shoedler54
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
@@ -134,7 +134,7 @@ For each half:
 
 6. Install the switches, caps and the battery - done!
 
-![20260124_222812](https://github.com/user-attachments/assets/ebcb15c5-88f6-4532-9fd1-ce5da38888c0)
+![20260125_213825](https://github.com/user-attachments/assets/75746ba9-ead4-41b1-9cbb-e99ea7ad79c7)
 
 ---
 
