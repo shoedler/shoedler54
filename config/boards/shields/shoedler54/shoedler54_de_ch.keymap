@@ -8,8 +8,9 @@
 
 / {
     behaviors {
-        mttp: mod_tap_tap_preffered {
+        mttp: mttp { // Mod tap, tap-preferred
             compatible = "zmk, behavior-hold-tap";
+            label = "MTTP";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
