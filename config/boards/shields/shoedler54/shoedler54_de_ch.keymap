@@ -9,12 +9,12 @@
 / {
     behaviors {
         mttp: mttp { // Mod tap, tap-preferred
-            compatible = "zmk, behavior-hold-tap";
+            compatible = "zmk,behavior-hold-tap";
             label = "MTTP";
-            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
             bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
             display-name = "Mod-Tap (Tap pref)";
         };
     };
