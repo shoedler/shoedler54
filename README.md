@@ -2,7 +2,7 @@
 
 # shoedler54
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
-Designed for Mx-spacing (18 keycaps) and 1350 Choc v1 or v2 switches.
+Designed for Mx-spacing (18mm keycaps) and 1350 Choc v1 or v2 switches.
 
 ## Why?
 
