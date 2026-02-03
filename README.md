@@ -1,8 +1,12 @@
-![20260124_222812 1](https://github.com/user-attachments/assets/c4c6f7a0-cb5c-440a-8e7c-71c50f169e8c)
+![20260203_211004](https://github.com/user-attachments/assets/39a064f2-7ab1-4462-9062-f440cc27017e)
+> Kailh Choc v2 Ice Creams, Taihao THTs
 
 # shoedler54
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
 Designed for Mx-spacing (18mm keycaps) and 1350 Choc v1 or v2 switches.
+
+![20260124_222812 1](https://github.com/user-attachments/assets/c4c6f7a0-cb5c-440a-8e7c-71c50f169e8c)
+> Kailh Choc v2 Black Clouds, Repo-included 3D printed keycaps
 
 ## Why?
 
@@ -119,7 +123,7 @@ For each half:
 2. Cover the bottom sides of the PCBs with tape (I used masking tape). Apply the first layer quite firmly, such that it follows the contours of the hotswap sockets. You'll want to make sure that you extend the tape over the edges of the PCB. Apply at least 3 layers.
 
 ![20260123_114036](https://github.com/user-attachments/assets/e35ec1e6-6376-497a-b4d6-04bafde0ce18)
-  
+
 3. Trace the PCB outline to the tape with a pen. Also, trace the screw holes.
 
 ![20260123_114252](https://github.com/user-attachments/assets/16342578-8af7-46aa-a2b5-787bbc1b2cea)
