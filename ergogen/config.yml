@@ -1,5 +1,32 @@
 meta:
   engine: 4.2.0
+
+units:
+  shared_mcu_w: 17.78 # ProMicro width
+  shared_mcu_h: 33 # ProMicro height
+
+  outline_ol_pad: 1.5 # Outline padding (PCB fab constraints)
+  outline_keycap_size: 18
+  outline_keycap_fillet: 1
+
+  pcb_screw_hole_size: 4.6
+  pcb_screw_drill: 2.2
+
+  case_switchplate_d: 2.2 # 2.2mm thickness for Chocs
+  case_bottom_t: 2 # Case (bottom) thickness
+  case_wall_rise: 2.5
+  case_plate_clearance: 1.6
+  case_io_lip_drop: 1.5
+  case_io_mask_h: 10
+  case_switchplate_size: 14.2 # 0.2mm padding for 3D printing
+  case_screw_insert_r: 1.2
+  case_screw_hole_r: 1.65
+  case_screw_standoff_r: 3.1
+  case_insert_lip_h: 1
+  case_cover_t: 1
+  case_cover_wall_t: 5
+  case_usb_c_t: 3.2 # USB-C thickness
+
 points:
   key.spacing: U
   key.tags: key
@@ -23,6 +50,7 @@ points:
         r2: # Home
         r3: # Above
         r4: # Nums
+
     thumb:
       anchor:
         ref: matrix_c5_r1
@@ -40,14 +68,16 @@ points:
           key.origin: [-10, -8]
       rows:
         r0: # Thumb
+
     mcu:
       key.tags:
         - helper
       anchor:
         - ref: matrix_c5_r4
-          shift: [u/2+18/2+1.6,u/2-mcu_h/2]
+          shift: [u/2+18/2+1.6, u/2-shared_mcu_h/2]
+
     screw_1:
-      key.tags: 
+      key.tags:
         - helper
         - screw
       anchor:
@@ -56,6 +86,7 @@ points:
           - ref: matrix_c0_r3
           - ref: matrix_c1_r4
           - ref: matrix_c1_r3
+
     screw_2:
       key.tags:
         - helper
@@ -66,7 +97,8 @@ points:
           - ref: matrix_c5_r3
           - ref: matrix_c4_r4
           - ref: matrix_c4_r3
-        shift: [0,-2.5]
+        shift: [0, -2.5]
+
     screw_3:
       key.tags:
         - helper
@@ -77,6 +109,7 @@ points:
           - ref: matrix_c0_r2
           - ref: matrix_c1_r1
           - ref: matrix_c1_r2
+
     screw_4:
       key.tags:
         - helper
@@ -86,7 +119,8 @@ points:
           - ref: thumb_c4_r0
           - ref: thumb_c5_r0
           - ref: matrix_c5_r1
-        shift: [7.5,0]
+        shift: [7.5, 0]
+
     screw_5:
       key.tags:
         - helper
@@ -97,29 +131,22 @@ points:
           - ref: matrix_c4_r1
           - ref: matrix_c3_r2
           - ref: matrix_c3_r1
-        shift: [0,-0.5]
-
-units: 
-  ol_pad: 1.5 # Outline Padding (bc of PCB fab constraints)
-  keyplate_d: 2.2 # 2.2mm thickness for Chocs
-  mcu_w: 17.78 # ProMicro width
-  mcu_h: 33 # ProMicro height
-  case_bottom_t: 2 # Case (bottom) thickness
+        shift: [0, -0.5]
 
 outlines:
-  shoedler54:
+  shoedler54: # Main PCB outline and key padding.
     - where: [key]
       what: rectangle
-      size: [U+ol_pad, U+ol_pad]
+      size: [U+outline_ol_pad, U+outline_ol_pad]
     - where: [mcu]
       what: rectangle
-      size: [18+ol_pad, mcu_h]
-    - what: rectangle # Removes the [key] padding left of the mcu 
+      size: [18+outline_ol_pad, shared_mcu_h]
+    - what: rectangle # Removes the [key] padding left of the mcu
       where: matrix_c5_r4 # (where the switches are)
-      size: [U+ol_pad, U]
-      adjust.shift: [ol_pad, U]
+      size: [U+outline_ol_pad, U]
+      adjust.shift: [outline_ol_pad, U]
       operation: subtract
-    - what: polygon
+    - what: polygon # Bridge between matrix and thumb cluster.
       points:
         - ref: matrix_c2_r1
           shift: [U/2, -U/2]
@@ -128,48 +155,52 @@ outlines:
         - ref: matrix_c3_r1
           shift: [3, -U/2]
         - ref: thumb_c3_r0
-          shift: [-U/2-ol_pad, -U/2-ol_pad]
+          shift: [-U/2-outline_ol_pad, -U/2-outline_ol_pad]
         - ref: thumb_c3_r0
-          shift: [-U/2-ol_pad, -U/2-ol_pad]
+          shift: [-U/2-outline_ol_pad, -U/2-outline_ol_pad]
         - ref: thumb_c4_r0
-          shift: [-U/2-ol_pad, -U/2-ol_pad]
+          shift: [-U/2-outline_ol_pad, -U/2-outline_ol_pad]
         - ref: thumb_c5_r0
-          shift: [-U/2-ol_pad, -U/2-ol_pad]
+          shift: [-U/2-outline_ol_pad, -U/2-outline_ol_pad]
         - ref: thumb_c5_r0
-          shift: [U/2+ol_pad, -U/2-ol_pad]
+          shift: [U/2+outline_ol_pad, -U/2-outline_ol_pad]
         - ref: thumb_c5_r0
-          shift: [U/2+ol_pad, U/2+ol_pad]
+          shift: [U/2+outline_ol_pad, U/2+outline_ol_pad]
         - ref: mcu
-          shift: [18/2+ol_pad,-77]
+          shift: [18/2+outline_ol_pad, -77]
         - ref: mcu
-          shift: [18/2+ol_pad,mcu_h/2]
+          shift: [18/2+outline_ol_pad, shared_mcu_h/2]
         - ref: matrix_c5_r4
           shift: [-U/2, U/2]
         - ref: matrix_c2_r1
           shift: [-U/2, -U/2]
+
   _pcb_keycaps:
     - where: [key]
       what: rectangle
-      size: 18
-      fillet: 1
+      size: outline_keycap_size
+      fillet: outline_keycap_fillet
     - where: [thumb]
       what: rectangle
-      size: 18
-      fillet: 1
+      size: outline_keycap_size
+      fillet: outline_keycap_fillet
+
   _pcb_mcu:
     - where: [mcu]
       what: rectangle
-      size: [mcu_w, mcu_h]
+      size: [shared_mcu_w, shared_mcu_h]
     - where: [mcu]
       what: rectangle
       size: [8.94, 7.35]
       operation: stack
-      adjust.shift: [0, mcu_h/2-7.35/2+0.7]
+      adjust.shift: [0, shared_mcu_h/2-7.35/2+0.7]
+
   _pcb_screws:
     - where: [screw]
       what: circle
       radius: 4.3/2
-  preview_pcb:
+
+  preview_pcb: # PCB preview stack for sanity checks.
     - what: outline
       name: shoedler54
     - what: outline
@@ -181,20 +212,23 @@ outlines:
     - what: outline
       name: _pcb_screws
       operation: stack
+
   _case_mcu_cutout:
     - where: [mcu]
       what: rectangle
-      size: [mcu_w, mcu_h]
+      size: [shared_mcu_w, shared_mcu_h]
+
   _case_bat_cutout:
     - where: [mcu]
       what: rectangle
       size: [3.2, 7]
-      adjust.shift: [-mcu_w/2+3.2/2, -mcu_h/2-7/2+0.1]
+      adjust.shift: [-shared_mcu_w/2+3.2/2, -shared_mcu_h/2-7/2+0.1]
       operation: stack
-    - where: [mcu] # Battery
+    - where: [mcu] # Battery cutout
       what: rectangle
       size: [17, 51]
-      adjust.shift: [2.4-(mcu_w-17)/2 , -mcu_h/2-51/2]
+      adjust.shift: [2.4-(shared_mcu_w-17)/2, -shared_mcu_h/2-51/2]
+
   _case_mcu_bat_mask:
     - where: [mcu]
       what: rectangle
@@ -203,26 +237,27 @@ outlines:
     - where: [mcu]
       what: rectangle
       size: [40, 40]
-      adjust.shift: [0,-88.5]      
+      adjust.shift: [0, -88.5]
     - where: [mcu]
       what: rectangle
-      size: [10,20]
+      size: [10, 20]
       adjust.shift: [-11, -70]
       adjust.rotate: 25
-  _case_plate:
+
+  _case_plate: # Switchplate cutouts and case openings.
     - what: outline
       name: shoedler54
     - where: [key]
       what: rectangle
-      size: 14.2 # .2mm Padding bc 3D printing
+      size: case_switchplate_size
       operation: subtract
     - where: [thumb]
       what: rectangle
-      size: 14.2
+      size: case_switchplate_size
       operation: subtract
     - where: [screw]
       what: circle
-      radius: 1.2
+      radius: case_screw_insert_r
       operation: subtract
     - what: outline
       name: _case_mcu_cutout
@@ -233,23 +268,27 @@ outlines:
     - what: rectangle # Mask to remove floater
       where: [mcu]
       size: [20, 40]
-      adjust.shift: [(20-mcu_w)/2,0]
+      adjust.shift: [(20-shared_mcu_w)/2, 0]
       operation: subtract
+
   _case_bottom:
     - what: outline
       name: shoedler54
       expand: 3
+
   _case_pcb_mask:
     - what: outline
       name: shoedler54
       expand: 0.7
       joints: pointy
+
   _case_wall:
     - what: outline
       name: _case_bottom
     - what: outline
       name: _case_pcb_mask
       operation: subtract
+
   _case_wall_io_mask:
     - what: rectangle # Reset switch
       where: [mcu]
@@ -259,23 +298,27 @@ outlines:
       what: rectangle
       size: [8.94 + 4, 5] # 4mm l/r pad
       adjust.shift: [0, 19.7]
+
   _case_wall_power_sw_mask:
     - what: rectangle # Power switch
       where: [mcu]
-      size: [17.2,5]
+      size: [17.2, 5]
       adjust.shift: [-15, 19.7]
+
   _case_screw_holes:
     - what: circle
       where: [screw]
-      radius: 1.65
+      radius: case_screw_hole_r
+
   _case_screw_standoffs:
     - what: circle
       where: [screw]
-      radius: 3.1
+      radius: case_screw_standoff_r
     - what: outline
       name: _case_screw_holes
       operation: subtract
-  preview_case:
+
+  preview_case: # Case preview stack for print fit.
     - what: outline
       name: _case_plate
     - what: outline
@@ -286,12 +329,114 @@ outlines:
       operation: stack
     - what: outline
       name: _case_wall_io_mask
-      operation: stack    
+      operation: stack
     - what: outline
       name: _case_wall_power_sw_mask
       operation: stack
     - what: outline
       name: _pcb_keycaps
+      operation: stack
+
+  _carry_case_mask:
+    - what: outline
+      name: shoedler54
+      expand: 4
+
+  _carry_case_inset_mask:
+    - what: outline
+      name: shoedler54
+      expand: 1.7
+
+  _carry_case_frame:
+    - what: outline
+      name: _case_bottom
+      expand: 4
+    - what: outline
+      name: _carry_case_mask
+      operation: subtract
+
+  _carry_case_inset_frame:
+    - what: outline
+      name: _case_bottom
+      expand: 4
+    - what: outline
+      name: _carry_case_inset_mask
+      operation: subtract
+
+  preview_carry_case: # Carry case preview stack.
+    - what: outline
+      name: _carry_case_inset_frame
+    - what: outline
+      name: _case_wall
+      operation: stack
+
+  _case_cover:
+    - where: [mcu]
+      what: rectangle
+      size: [20.7, 84]
+      adjust.shift: [0, -25.7]
+      operation: stack
+    - where: [thumb_c4_r0]
+      what: rectangle
+      size: [20, 20]
+      operation: subtract
+    # - where: [mcu] # LED cutout
+    #   what: rectangle
+    #   size: [13.5, 2.5]
+    #   adjust.shift: [0, 8]
+    #   operation: subtract
+    # - where: [mcu] # LED cutout bridge
+    #   what: rectangle
+    #   size: [8.5, 3]
+    #   adjust.shift: [0, 8]
+    #   operation: add
+
+  _case_cover_wall: # Cover wall and battery reliefs.
+    - what: outline
+      name: _case_cover
+    - where: [mcu]
+      what: rectangle
+      size: [shared_mcu_w+.6, shared_mcu_h]
+      adjust.shift: [0.25, 0]
+      operation: subtract
+    - what: outline
+      name: _case_bat_cutout
+      operation: subtract
+    - where: [mcu] # Battery sidewall right
+      what: rectangle
+      size: [1, 51]
+      adjust.shift: [9.95, -42]
+      operation: add
+    - where: [mcu] # Battery sidewall bottom
+      what: rectangle
+      size: [17, 1]
+      adjust.shift: [1, -67]
+      operation: add
+
+  _case_cover_wall_inset:
+    - what: outline
+      name: _case_cover_wall
+    - where: [mcu]
+      what: rectangle
+      size: [5, 90]
+      adjust.shift: [-8.9, -25]
+      operation: subtract
+
+  _case_cover_wall_inset_usbc:
+    - where: [mcu] # Mcu sidewall top
+      what: rectangle
+      size: [20, 2]
+      adjust.shift: [0, 15.3]
+      operation: add
+
+  preview_case_cover:
+    - what: outline
+      name: _case_cover
+    - what: outline
+      name: _case_cover_wall
+      operation: stack
+    - what: outline
+      name: _case_cover_wall_inset_usbc
       operation: stack
 
 pcbs:
@@ -314,6 +459,7 @@ pcbs:
           locked_traces_vias: true
           reversible: true
         adjust.rotate: 180
+
       diodes:
         where: /key/
         what: ceoloide/diode_tht_sod123
@@ -324,6 +470,7 @@ pcbs:
           include_traces_vias: true
         adjust.shift: [0, 3.5]
         adjust.rotate: 180
+
       mcu:
         what: ceoloide/mcu_supermini_nrf52840
         where: mcu
@@ -347,14 +494,16 @@ pcbs:
           P20_label: " "
           P21_label: " "
           use_rectangular_jumpers: false
+
       battery_connector:
         what: ceoloide/battery_connector_jst_ph_2
         where: mcu
         params:
           reversible: true
         adjust:
-          shift: [-7.04,-20.5]
+          shift: [-7.04, -20.5]
           rotate: 90
+
       on_off_switch:
         what: ceoloide/power_switch_smd_side
         where: mcu
@@ -363,8 +512,9 @@ pcbs:
           to: RAW
           reversible: true
         adjust:
-          shift: [-15, mcu_h/2-2]
+          shift: [-15, shared_mcu_h/2-2]
           rotate: 90
+
       reset_switch:
         what: ceoloide/reset_switch_smd_side
         where: mcu
@@ -374,32 +524,34 @@ pcbs:
           include_silkscreen: true
           include_courtyard: true
         adjust:
-          shift: [-25, mcu_h/2-2.5]
+          shift: [-25, shared_mcu_h/2-2.5]
           rotate: 0
+
       screws:
         what: ceoloide/mounting_hole_npth
         where: /screw/
         params:
-          hole_size: 4.6
-          hole_drill: 2.2
+          hole_size: pcb_screw_hole_size
+          hole_drill: pcb_screw_drill
 
 cases:
-  shoedler54_case_key_plate:
+  shoedler54_case_switchplate_right:
     - what: outline
       name: _case_plate
-      extrude: keyplate_d
+      extrude: case_switchplate_d
 
   _shoedler54_case_left_io_segment:
+    # Wall segment behind IO, kept separate so it can be re-added after masking.
     - what: outline
-      name: _case_wall 
-      extrude: case_bottom_t + 2.5 + 1.6 + keyplate_d
+      name: _case_wall
+      extrude: case_bottom_t + case_wall_rise + case_plate_clearance + case_switchplate_d
     - what: outline
       name: _case_wall_io_mask
-      extrude: case_bottom_t + 2.5 - 1.5
+      extrude: case_bottom_t + case_wall_rise - case_io_lip_drop
       operation: intersect
     - what: outline
       name: _case_wall_power_sw_mask
-      extrude: 10
+      extrude: case_io_mask_h
       operation: subtract
 
   shoedler54_case_left:
@@ -412,27 +564,53 @@ cases:
       operation: subtract
     - what: outline
       name: _case_screw_holes
-      extrude: 1
+      extrude: case_insert_lip_h
       operation: add
     - what: outline
       name: _case_screw_standoffs
-      extrude: case_bottom_t + 2.5 # For 3mm deep inserts
-    
+      extrude: case_bottom_t + case_wall_rise # For 3mm deep inserts
+
     # Add the wall...
     - what: outline
-      name: _case_wall 
-      extrude: case_bottom_t + 2.5 + 1.6 + keyplate_d
+      name: _case_wall
+      extrude: case_bottom_t + case_wall_rise + case_plate_clearance + case_switchplate_d
 
-    # ...then subtract the io mask 
+    # ...then subtract the io mask
     - what: outline
       name: _case_wall_io_mask
-      extrude: 10
+      extrude: case_io_mask_h
       operation: subtract
     - what: outline
       name: _case_wall_power_sw_mask
-      extrude: 10
+      extrude: case_io_mask_h
       operation: subtract
 
     # ...and add back the io wall segment
     - what: case
       name: _shoedler54_case_left_io_segment
+
+  shoedler54_case_cover_right:
+    - what: outline
+      name: _case_cover
+      extrude: case_cover_t
+    - what: outline
+      name: _case_cover_wall
+      extrude: case_cover_t + case_cover_wall_t - case_switchplate_d
+    - what: outline
+      name: _case_cover_wall_inset_usbc
+      extrude: case_cover_t + case_cover_wall_t - case_usb_c_t
+    - what: outline
+      name: _case_cover_wall_inset
+      extrude: case_cover_t + case_cover_wall_t
+
+  shoedler54_carry_case:
+    - what: outline
+      name: _carry_case_inset_frame
+      extrude: 36 - 8.5
+    - what: outline
+      name: _carry_case_inset_frame
+      extrude: 8.5
+      operation: subtract
+    - what: outline
+      name: _carry_case_frame
+      extrude: 36
