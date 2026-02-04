@@ -33,7 +33,7 @@ side_fillet_start_z  = 2.2;   // z where outer “inset/taper” begins
 
 /* Top inset / touch surface shaping */
 inset_lr         = 2.0;   // inset on left/right at the very top (X border)
-inset_tb_top     = 1.0;   // inset on top/bottom at the very top (Y border) (your 2mm->1mm feel)
+inset_tb         = 2.0;   // inset on top/bottom at the very top (Y border) (your 2mm->1mm feel)
 dish_depth       = 1.0;   // concavity depth at center (approx)
 dish_span_scale  = 0.95;  // how wide the dish influences (0..1), smaller = more localized
 
@@ -100,8 +100,8 @@ module keycap_body() {
   base_h = cap_h;
 
   // top footprint (inset)
-  top_w  = max(0.1, cap_w - 2*inset_lr);
-  top_h  = max(0.1, cap_h - 2*inset_tb_top);
+  top_w  = max(0.1, cap_w - 2*inset_tb);
+  top_h  = max(0.1, cap_h - 2*inset_lr);
 
   // scale factors for the upper taper
   sx = top_w / base_w;
@@ -137,8 +137,8 @@ module underside_pocket() {
 
 // concave dish made with a cylinder (axis along X)
 module concave_dish_cut() {
-  // cylinder gives curvature in Y, leaving X mostly "flat" — matches your 2mm LR / curved TB feel.
-  top_h = max(0.1, cap_h - 2*inset_tb_top);
+  // cylinder gives curvature in Y, leaving X mostly "flat"
+  top_h = max(0.1, cap_h - 2*inset_lr);
 
   a = dish_span_scale * top_h / 2; // half-chord in Y
   h = dish_depth;                  // sagitta (depth)
