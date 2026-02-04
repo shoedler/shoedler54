@@ -26,12 +26,14 @@ For one complete board - e.g. two halves - you'll need:
 - 54 1u Keycaps, Choc v1 or v2 (I suggest to print the provided ones, or - if you want legends, the Taihao THTs)
 - 2 EVQPUL02K Switches ($\to$ board reset button)
 - 2 SSSS811101 Switches ($\to$ power switch)
-- 2 701535 3.7v, 350mAh Batteries
+- 2 801540 3.7v, 380mAh Batteries
+  - or, 2 701535 3.7v, 350mAh
+  - or, 2 501646 3.7v, 380mAh (these are too long (46mm) and require to be soldered to the JST pads, which I **do not recommend**!)
 - 2 JST PH 2.0 THT Sockets
 
 For the case you'll need:
 
-- Obviously, the printed out case files. The key plate can be printed twice as it is reversible. The case must be mirrored in your slicer of choice for the right half. For convenience, I've added *.3mf files which includes a mirrored version of the plate and the case. The case also has the fuzzy skin applied.
+- Obviously, the printed out case files. The key plate can be printed twice, as it is reversible. The case must be mirrored in your slicer of choice for the right half. For convenience, I've added *.3mf files which includes a mirrored version of the plate and the case. The case also has the fuzzy skin applied.
 - 10x M2x5 (or 6)mm flathead screws
 - 10x M2x3mm Heat set inserts
 - Optionally some painters tape.
@@ -48,7 +50,7 @@ For the case you'll need:
 | 54 1u Keycaps, Choc v1/v2 | AliExpress | pack of 60 | $15 |
 | 2 Reset Switches | AliExpress | EVQPUL02K | ~$1 |
 | 2 Power Switches | AliExpress | SSSS811101 | $1 |
-| 2 Batteries | AliExpress | 70153, 350mAh | $8 |
+| 2 Batteries | AliExpress | 801546, 380mAh | $8 |
 | 2 JST PH 2.0 Sockets | AliExpress | ~$1 |
 > Prices as of january, 2026
 
@@ -73,10 +75,17 @@ Assuming you have ordered the parts and don't want to route the PCB yourself, th
 
 I used a Babulab A1 mini and default slicer settings (Bambustudio). Everything was printed in their PLA Matte.
 
-If your slicer accepts 3mf files, then just print the provided 3mf files in the `stl` directory. If you have to use the stl, then consider the following:
+#### What do I need to print?
 
-- You'll want to print the keyplate twice - don't forget to flip it once to get the same finish on both sides (I like the side that sits on the buildplate to face outwards for a nice contrast).
-- As for the case, you'll see that there is only the `_left` half stl file available - you'll need to mirror it in your slicer to print the right side. I suggest using the fuzzy skin setting (in Bambustudio: `Others > Special mode > Fuzzy skin`, use "Contour").
+You'll need at least:
+
+- 2x `shoedler54_switchplate_right.stl`, which is the plate that sits on the PCB and where the keyswitches are mounted into - I recommend using the provided 3mf files for that: `shoedler54_switchplate_left.3mf` and `shoedler54_switchplate_right.3mf`. That'll give you mirrored versions so you have the buildplate-finish texture on the same side for both halves.
+- 2x `shoedler54_case_left.stl`, which is the case where the PCB gets mounted in - same story, use the provided 3mf files for that: `shoedler54_case_left.3mf` and `shoedler54_case_right.3mf`. That'll also give you mirrored versions for both halves with fuzzy skin. Theoretically, you don't **need** the case, but I strongly recommend it to provide a little bit of protection for the PCB. If you're working directly with the stl, then you'll have to mirror it. I suggest using the fuzzy skin setting (in Bambustudio: `Others > Special mode > Fuzzy skin`, use "Contour").
+
+Optional:
+
+- 2x `shoedler54_case_cover_right.stl`, which is a small cover for the MCU + battery. Use `shoedler54_case_cover_left.3mf` and `shoedler54_case_cover_right.3mf` for mirrored version. Same as with the case, if you're working with the stl directly you'll need to mirror this too.
+- 1x `shoedler54_carry_case.stl`, which is a Go60-ish carry shell for the shoedler54. Use `shoedler54_carry_case.3mf` for a version with fuzzy skin. I did manage to print it without support, but there's a bit of luck involved.
 
 ### Printing the keycaps
 
