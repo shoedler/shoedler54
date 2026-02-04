@@ -1,12 +1,10 @@
 ![20260203_211004](https://github.com/user-attachments/assets/39a064f2-7ab1-4462-9062-f440cc27017e)
 > Kailh Choc v2 Ice Creams, Taihao THTs
 
+
 # shoedler54
 A 54-key, column-staggered, ortholinear, wireless split keyboard, inspired by ZSA Voyager and silakka54.
 Designed for Mx-spacing (18mm keycaps) and 1350 Choc v1 or v2 switches.
-
-![20260124_222812 1](https://github.com/user-attachments/assets/c4c6f7a0-cb5c-440a-8e7c-71c50f169e8c)
-> Kailh Choc v2 Black Clouds, Repo-included 3D printed keycaps
 
 ## Why?
 
@@ -14,6 +12,19 @@ This project came to life as I wanted to get up to speed with [ergogen.xyz](ergo
 Other things I've aimed for:
 - Must be cheap, < $100 for a complete keyboard.
 - Must be low profile, comparable to the ZSA Voyager.
+
+## Impressions
+
+![20260204_223230](https://github.com/user-attachments/assets/9a8d093e-1b01-4108-80a9-7f02c4c7a857)
+> Carry case
+
+![20260204_223333](https://github.com/user-attachments/assets/bd96e0e9-10c8-4bc4-a472-e01938491bf4)
+> With optional MCU + battery cover
+
+![20260124_222812 1](https://github.com/user-attachments/assets/c4c6f7a0-cb5c-440a-8e7c-71c50f169e8c)
+> Black version with Kailh Choc v2 Black Clouds, Repo-included 3D printed keycaps
+
+---
 
 ## Bill of materials
 
