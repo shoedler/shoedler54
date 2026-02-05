@@ -34,7 +34,7 @@
 &trans  &kp F1  &kp F2        &kp F3            &kp F4           &kp F5       &kp F6           &kp F7           &kp F8           &kp F9     &kp F10  &kp F11
 &trans  &none   &kp C_VOL_DN  &kp K_MUTE        &kp C_VOLUME_UP  &none        &kp HOME         &kp PG_UP        &kp PG_DN        &kp END    &none    &kp F12
 &trans  &none   &kp K_PREV    &kp K_PLAY_PAUSE  &kp K_NEXT       &none        &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT  &none    &trans
-&trans  &none   &none         &kp K_BACK        &kp K_FORWARD    &lt 3 0      &kp PRINTSCREEN  &kp LC(LS(TAB))  &kp LC(LS(TAB))  &none      &none    &trans
+&trans  &none   &none         &kp K_BACK        &kp K_FORWARD    &lt 3 0      &kp PRINTSCREEN  &kp LC(LS(TAB))  &kp LC(TAB)  &none      &none    &trans
                               &none             &none            &none        &none            &none            &none
             >;
         };
