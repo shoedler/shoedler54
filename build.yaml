@@ -37,3 +37,6 @@ include:
     shield: shoedler54_right
     cmake-args: -DKEYMAP_FILE=../../config/boards/shields/shoedler54/shoedler54_en.keymap
     artifact-name: shoedler54_right_en
+  - board: nice_nano_v2
+    shield: settings_reset
+    artifact-name: settings_reset
