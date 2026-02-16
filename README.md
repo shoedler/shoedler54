@@ -44,10 +44,10 @@ For one complete board - e.g. two halves - you'll need:
 
 For the case you'll need:
 
-- Obviously, the printed out case files. The key plate can be printed twice, as it is reversible. The case must be mirrored in your slicer of choice for the right half. For convenience, I've added *.3mf files which includes a mirrored version of the plate and the case. The case also has the fuzzy skin applied.
+- Obviously, the printed case files. See section about printing below.
 - 10x M2x5 (or 6)mm flathead screws
 - 10x M2x3mm Heat set inserts
-- Optionally some painters tape.
+- Optionally, some painters tape.
 
 ## Approximate cost
 
@@ -62,7 +62,7 @@ For the case you'll need:
 | 2 Reset Switches | AliExpress | EVQPUL02K | ~$1 |
 | 2 Power Switches | AliExpress | SSSS811101 | $1 |
 | 2 Batteries | AliExpress | 801546, 380mAh | $8 |
-| 2 JST PH 2.0 Sockets | AliExpress | ~$1 |
+| 2 JST PH 2.0 Sockets | AliExpress | | ~$1 |
 > Prices as of january, 2026
 
 Should result in ~$75 per completed keyboard. This does not include the case hardware and printed case files, but it's all you need to get a working keyboard. Also, the prices listed are adjusted to the amount of parts required.
@@ -114,7 +114,7 @@ The caps require no supports if you place them on one of the fillets - they do h
 
 Since the PCB is reversible it can get confusing quick. All of the components **except the ProMicro and the JST connector** are soldered to the backside of each half.
 
-1. Solder diodes, hotswap sockets, reset- and powerswitches on the backside of each half.
+1. Solder diodes, hotswap sockets, reset- and powerswitches on the backside of each half. **This is also the side were you bridge all of the solder-jumpers with solder** (8 for the Mcu, 2 for the Battery connector).
 2. Direct-solder the ProMicro to the frontside of the PCB, along with the JST connector. (Pin Sockets are also an option for the mcu, if you want - it just makes the keyboard a bit thicker)
 
 > [!CAUTION]
@@ -137,10 +137,13 @@ For each half:
 2. Press the reset button twice within 500ms - on my versions of the ProMicro, their red LED breaths gently once you've entered bootloader mode.
 3. You'll see a `NICENANO` appear in your device tree. Simply drag and drop the **correct** firmware for the half your working on onto the mcu - it should eject itself automatically once the firmware is flashed.
 
+> [!NOTE]
+> If you run into trouble, there's also a `settings_reset` firmware provided in the archive. See [the ZMK troubleshooting guide](https://zmk.dev/docs/troubleshooting/connection-issues#reset-split-keyboard-procedure) on how to flash it.
+
 ### Assembly
 
 1. Prep the cases by installing the heat set inserts.
-2. Cover the bottom sides of the PCBs with tape (I used masking tape). Apply the first layer quite firmly, such that it follows the contours of the hotswap sockets. You'll want to make sure that you extend the tape over the edges of the PCB. Apply at least 3 layers.
+2. Cover the bottom sides of the PCBs with tape (I used masking tape). Apply the first layer quite firmly, such that it follows the contours of the hotswap sockets. You'll want to make sure that you extend the tape over the edges of the PCB. Apply at least 3 layers. In my experience anything beyond 5 layers of standard painters tape yields no further improvements. Also, it gets thick quick.
 
 ![20260123_114036](https://github.com/user-attachments/assets/e35ec1e6-6376-497a-b4d6-04bafde0ce18)
 
@@ -156,7 +159,7 @@ For each half:
 
 ![20260124_222032](https://github.com/user-attachments/assets/6558935a-2e34-4053-a9d4-958fcc821ed6)
 
-6. Install the switches, caps and the battery - done!
+6. Install the switches, caps and the battery. For the battery, I usually use a thin, clear double-sided tape. Done!
 
 ![20260125_213825](https://github.com/user-attachments/assets/75746ba9-ead4-41b1-9cbb-e99ea7ad79c7)
 
