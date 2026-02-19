@@ -23,7 +23,7 @@
             label = "MTTP";
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
-            quick-tap-ms = <100>;
+            quick-tap-ms = <149>;
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             display-name = "Mod-Tap (Tap pref)";
