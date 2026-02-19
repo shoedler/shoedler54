@@ -27,7 +27,7 @@
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             display-name = "Mod-Tap (Tap pref)";
-        }
+        };
     };
 
     keymap {
