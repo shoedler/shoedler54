@@ -34,7 +34,7 @@ For one complete board - e.g. two halves - you'll need:
 - 54 1N4148W SOD-123 Diodes
 - 54 Kailh Low-profile 1350 Hotswap Sockets
 - 54 Keyswitches, Choc v1 or v2
-- 54 1u Keycaps, Choc v1 or v2 (I suggest to print the provided ones, or - if you want legends, the Taihao THTs)
+- 54 1u (18mm) Keycaps, Choc v1 or v2 stems (I suggest to print the provided ones (Mx-stem e.g. Choc v2), or - if you want legends, the Taihao THTs)
 - 2 EVQPUL02K Switches ($\to$ board reset button)
 - 2 SSSS811101 Switches ($\to$ power switch)
 - 2 801540 3.7v, 380mAh Batteries
@@ -190,3 +190,5 @@ Modifying the config will force you to reroute the PCB again. Though fear not - 
 - nickcoutsos Keymap-layout-tools: https://nickcoutsos.github.io/keymap-layout-tools/
 - Joel Spadins zmk-locale-generator for the de-swiss keycode header: https://github.com/joelspadin/zmk-locale-generator
 - ZMK guide on how to add a new shield: https://zmk.dev/docs/development/hardware-integration/new-shield
+- More of my keyboards:
+  - effiddy - a 50-key wireless split, inspired by totem: https://github.com/shoedler/effiddy
