@@ -192,3 +192,4 @@ Modifying the config will force you to reroute the PCB again. Though fear not - 
 - ZMK guide on how to add a new shield: https://zmk.dev/docs/development/hardware-integration/new-shield
 - More of my keyboards:
   - effiddy - a 50-key wireless split, inspired by totem: https://github.com/shoedler/effiddy
+  - ezy54 - A 54-key, column-staggered, wireless split keyboard, inspired by ZSA Voyager and totem: https://github.com/shoedler/ezy54
